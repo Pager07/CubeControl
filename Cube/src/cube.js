@@ -179,7 +179,7 @@ function initVertexBuffers(gl){
 
     // write vertex data to buffer
     if(!initArrayBuffer(gl,'a_Position', vertices, 3, gl.FLOAT)) return -1;
-    if(!initArrayBuffer(gl,'a_color', colors, 3, gl.FLOAT)) return -1;
+    if(!initArrayBuffer(gl,'a_Color', colors, 3, gl.FLOAT)) return -1;
     if(!initArrayBuffer(gl, 'a_Normal', normals, 3, gl.FLOAT)) return -1;
 
     var indexBuffer = gl.createBuffer();
@@ -223,6 +223,7 @@ function initArrayBuffer(gl,attribute,data,num,type){
     gl.enableVertexAttribArray(a_attribute)
 
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    return true
 }
 
 function initAxesVertexBuffers(gl){
@@ -268,7 +269,6 @@ function draw(gl,u_ModelMatrix, u_NormalMatrix, u_isLighting){
     gl.uniform1i(u_isLighting,false);
 
     var n = initAxesVertexBuffers(gl);
-    
     modelMatrix.setTranslate(0,0,0);
     gl.uniformMatrix4fv(u_ModelMatrix, false , modelMatrix.elements);
 
@@ -280,7 +280,7 @@ function draw(gl,u_ModelMatrix, u_NormalMatrix, u_isLighting){
     gl.uniform1i(u_isLighting, true);
 
     var n = initVertexBuffers(gl);
-
+    //console.log(n);
     //Rotate adn then translate
     modelMatrix.setTranslate(0,0,0);
     modelMatrix.rotate(g_yAngle, 0,1,0);
