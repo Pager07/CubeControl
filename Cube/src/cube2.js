@@ -42,9 +42,12 @@ var viewMatrix = new Matrix4();  // The view matrix
 var projMatrix = new Matrix4();  // The projection matrix
 var g_normalMatrix = new Matrix4();  // Coordinate transformation matrix for normals
 
+var SCALE_STEP  = 0.5;
 var ANGLE_STEP = 3.0;  // The increments of rotation angle (degrees)
 var g_xAngle = 0.0;    // The rotation x angle (degrees)
 var g_yAngle = 0.0;    // The rotation y angle (degrees)
+var g_xScale = 1.5;
+var g_yScale = 1.5;
 
 function main() {
 // Retrieve <canvas> element
@@ -65,8 +68,7 @@ if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
 
 // Set clear color and enable hidden surface removal
 gl.clearColor(0.0, 0.0, 0.0, 1.0);
-gl.enable(gl.DEPTH_TEST);
-
+gl.enable(gl.DEPTH_TEST); 
 // Clear color and depth buffer
 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
@@ -123,6 +125,20 @@ switch (ev.keyCode) {
     break;
     case 37: // Left arrow key -> the negative rotation of arm1 around the y-axis
     g_yAngle = (g_yAngle - ANGLE_STEP) % 360;
+    break;
+    case 65:
+    g_xScale = (g_xScale + SCALE_STEP);
+    break;
+    case 83:
+    console.log(g_xScale);
+    g_xScale = (g_xScale - SCALE_STEP);
+    console.log(g_xScale);
+    break;
+    case 68:
+    g_yScale = (g_yScale + SCALE_STEP );
+    break;
+    case 90:
+    g_yScale = (g_yScale - SCALE_STEP);
     break;
     default: return; // Skip drawing at no effective action
 }
@@ -310,7 +326,7 @@ if (n < 0) {
 modelMatrix.setTranslate(0, 0, 0);  // Translation (No translation is supported here)
 modelMatrix.rotate(g_yAngle, 0, 1, 0); // Rotate along y axis
 modelMatrix.rotate(g_xAngle, 1, 0, 0); // Rotate along x axis
-modelMatrix.scale(1.5, 1.5, 1.5); // Scale
+modelMatrix.scale(g_xScale,g_yScale, 1.5); // Scale
 
 // Pass the model matrix to the uniform variable
 gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements);

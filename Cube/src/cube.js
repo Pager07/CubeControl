@@ -45,9 +45,12 @@ var viewMatrix = new Matrix4();
 var projMatrix = new Matrix4();
 var g_normalMatrix = new Matrix4();
 
-var ANGLE_STEP = 3.0;
+var SCALE_STEP = 0.3;
+var ANGLE_STEP = 5.0;
 var g_xAngle = 0.0;
 var g_yAngle = 0.0;
+var g_xScale = 1.5;
+var g_yScale = 1.5;
 
 function main() {
 // Retrieve <canvas> element
@@ -127,13 +130,26 @@ function keydown(ev, gl, u_ModelMatrix, u_NormalMatrix, u_isLighting) {
         case 37: // Left arrow key -> the negative rotation of arm1 around the y-axis
         g_yAngle = (g_yAngle - ANGLE_STEP) % 360;
         break;
+        case 65:
+        g_xScale = (g_xScale + SCALE_STEP);
+        break;
+        case 83:
+        console.log(g_xScale);
+        g_xScale = (g_xScale - SCALE_STEP);
+        console.log(g_xScale);
+        break;
+        case 68:
+        g_yScale = (g_yScale + SCALE_STEP );
+        break;
+        case 90:
+        g_yScale = (g_yScale - SCALE_STEP);
+        break;
         default: return; // Skip drawing at no effective action
     }
     
     // Draw the scene
     draw(gl, u_ModelMatrix, u_NormalMatrix, u_isLighting);
-    }
-    
+    }   
     
 
 function initVertexBuffers(gl){
@@ -285,7 +301,7 @@ function draw(gl,u_ModelMatrix, u_NormalMatrix, u_isLighting){
     modelMatrix.setTranslate(0,0,0);
     modelMatrix.rotate(g_yAngle, 0,1,0);
     modelMatrix.rotate(g_xAngle, 1,0,0);//Rotate along x axis
-    modelMatrix.scale(1.5,1,1.5);//scale
+    modelMatrix.scale(g_xScale,g_yScale,1.5);//scale
 
     //pass the model matrix to the uniform variable 
     gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements);
