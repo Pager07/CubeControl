@@ -1,11 +1,11 @@
-#Goals:
+# Goals:
 1. Contorl a virtul cube with my hand
 2. I should be able to do the following transformation:
 	- Rotate the cube 
 	- Enlarge the cube
 	- Translate the cube 
 
-#Steps:
+# Steps:
  1. Render the cube 
  	1a. learn to render basic cube
  	1b. learn to add transforamtion to the cube
