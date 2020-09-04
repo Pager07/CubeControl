@@ -47,10 +47,14 @@ var g_normalMatrix = new Matrix4();
 
 var SCALE_STEP = 0.3;
 var ANGLE_STEP = 5.0;
+var TRANSLATE_STEP = 2;
 var g_xAngle = 0.0;
 var g_yAngle = 0.0;
 var g_xScale = 1.5;
 var g_yScale = 1.5;
+var g_xTranslate = 0;
+var g_yTranslate = 0;
+var g_zTranslate = 0;
 
 function main() {
 // Retrieve <canvas> element
@@ -143,6 +147,24 @@ function keydown(ev, gl, u_ModelMatrix, u_NormalMatrix, u_isLighting) {
         break;
         case 90:
         g_yScale = (g_yScale - SCALE_STEP);
+        break;
+        case 81:
+        g_xTranslate = (g_xTranslate + TRANSLATE_STEP);
+        break;
+        case 87:
+        g_xTranslate = (g_xTranslate - TRANSLATE_STEP);
+        break;
+        case 69:
+        g_yTranslate = (g_yTranslate + TRANSLATE_STEP);
+        break;
+        case 82:
+        g_yTranslate = (g_yTranslate - TRANSLATE_STEP);
+        break;
+        case 84:
+        g_zTranslate = (g_zTranslate + TRANSLATE_STEP);
+        break;
+        case 89:
+        g_zTranslate = (g_zTranslate - TRANSLATE_STEP);
         break;
         default: return; // Skip drawing at no effective action
     }
@@ -302,7 +324,7 @@ function draw(gl,u_ModelMatrix, u_NormalMatrix, u_isLighting){
     modelMatrix.rotate(g_yAngle, 0,1,0);
     modelMatrix.rotate(g_xAngle, 1,0,0);//Rotate along x axis
     modelMatrix.scale(g_xScale,g_yScale,1.5);//scale
-
+    modelMatrix.translate(g_xTranslate, g_yTranslate, g_zTranslate);
     //pass the model matrix to the uniform variable 
     gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements);
 
