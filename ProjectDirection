@@ -4,8 +4,11 @@
 	- Rotate the cube 
 	- Enlarge the cube
 	- Translate the cube 
+3. I should be able to detect hand keypoints 
+  - obtain keypoints of 1 hand with respective to whole image  
+  - obtain keypoints of 2 hand with respective to whole image 
 
-#Steps:
+#Goal 1 Steps:
  1. Render the cube 
  	1a. learn to render basic cube
  	1b. learn to add transforamtion to the cube
@@ -86,3 +89,18 @@
     - 
   - Scale
     - a,s,d,f
+
+#Goal 2 Steps:
+  1. Find a model for hand pose detection
+    1a. Load the model 
+    1b. Get Test prediction
+  2. Build a pipeline for inference 
+
+#Question:
+- What model will I be using?
+  - https://tfhub.dev/mediapipe/tfjs-model/handskeleton/1/default/1
+- How to use tfhub model in js?
+  - The author of the model has uploaded the model as npm package, I will just npm install via npm
+- How can I test my model has been loaded?
+  - How to run the html file?
+  

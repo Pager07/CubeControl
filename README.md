@@ -9,9 +9,9 @@
  1. Render the cube 
  	1a. learn to render basic cube
  	1b. learn to add transforamtion to the cube
- 		- [ ] trasnlation 
- 		- [x]  rotation
- 		- [x] enlargement
+ 		-  [ ] trasnlation 
+ 		-  [x]  rotation
+ 		-  [x] enlargement
  2. Obtain finger points model
  3. Map the finger points to the cube transformation 
 
