@@ -4,12 +4,14 @@
         <meta charset="utf-8">
         <title>Basic Cube</title>
         <script src="https://unpkg.com/@tensorflow/tfjs-core@2.1.0/dist/tf-core.js"></script>
-        <script src="https://unpkg.com/@tensorflow/tfjs-converter@2.1.0/dist/tf-converter.js"></script>
+        <script src="https://unpkg.com/@tensorflow/tfjs-converter@2.0.0/dist/tf-converter.js"></script>
  
         <!-- You must explicitly require a TF.js backend if you're not using the tfs union bundle. -->
-        <!-- <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.1.0/dist/tf-backend-webgl.js"></script> -->
+        <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.1.0/dist/tf-backend-webgl.js"></script>
         <!-- Alternatively you can use the WASM backend: <script src="https://unpkg.com/@tensorflow/tfjs-backend-wasm@2.1.0/dist/tf-backend-wasm.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-cpu"></script> 
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-cpu"></script>  -->
+        <!-- Import @tensorflow/tfjs-core -->
+ 
         <script src="https://unpkg.com/@tensorflow-models/handpose@0.0.6/dist/handpose.js"></script>
     </head>
     <body onload="main()">
@@ -20,7 +22,7 @@
         <canvas id='canvas' width="280" height="280" 
         style="position: absolute; top: 100;left: 100;border:8px solid;"></canvas>
         
-        <img id='canvasimg' src ='../FakeHandData/hand.jpg' "/>
+        <img id='canvasimg' src ='../FakeHandData/hand.jpg'  style="display: none;""/>
         <script src="../../lib/webgl-utils.js"></script>
         <script src="../../lib/webgl-debug.js"></script>
         <script src="../../lib/cuon-utils.js"></script>

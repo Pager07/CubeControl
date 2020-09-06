@@ -9,11 +9,11 @@ async function main2(){
     const ctx = canvas.getContext('2d');
     canvas.height = rawImage.height;
     canvas.width = rawImage.width;
-    rawImage.addEventListener('load', e=>{
-        ctx.drawImage(image)
-        console.log('Image is drawn to canvas');
-    });
+    ctx.drawImage(rawImage,30,30);
+    const data = ctx.getImageData(60,60,200,100);
+    //tf.browser.fromPixels(image)
     const predictions = await model.estimateHands(canvas);
+    console.log(predictions)
     if(predictions.length>0){
         for (let i = 0; i < predictions.length; i++) {
             const keypoints = predictions[i].landmarks;
