@@ -1,24 +1,31 @@
 var canvas, rawImage;
+
 async function main2(){
     console.log('Loading the model')
     const model = await handpose.load();
     console.log('The model has been loaded');
 
-    console.log('Loading Webcam')
+    console.log('Loading Webcam');
     const webcam = new Webcam(document.getElementById('wc'));
     await webcam.setup();
     console.log('Webcame is loaded');
-    while(true){
-        //const predictions = tf.tidy(async ()=>{
-            //const img = webcam.capture();
-            //const predictions =  await model.estimateHands(img);
-            //console.log(predictions)
-            //return predictions;
-        //});
 
+    console.log('loading canvas');
+    const canvas = document.getElementById('output');
+    const video = document.getElementById('video');
+    canvas.width = video.width;
+    canvas.height = video.height;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0,video.width, video.height);
+    ctx.strokeStyle = 'red';
+    ctx.fillStyle = 'red'; 
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1,1);
+
+    while(true){
         
         const img = webcam.capture();
-
+        tf.browser.toPixels(img,canvas)
         const predictions =  await model.estimateHands(img);
 
         if(predictions.length>0){

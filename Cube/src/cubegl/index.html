@@ -21,10 +21,11 @@
             This canvas will hold the cube
         </canvas>
 
-        <div>
-            <div>
-                <video autoplay playsinline muted id='wc' width='244' height='244' "></video>
-            </div>
+        <div id='canvas-wrapper'>
+            <canvas id='output'></canvas>
+            <video id="video" playsinline="" 
+            style="-webkit-transform:scaleX(-1);transform:scaleX(-1);visibility:hidden;width:auto;height:auto;position:absolute;" 
+            width="640" height="500"> </video>
         </div>
         <script src="../../lib/webgl-utils.js"></script>
         <script src="../../lib/webgl-debug.js"></script>
