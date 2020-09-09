@@ -90,11 +90,17 @@
   - Scale
     - a,s,d,f
 
+
+
+
 #Goal 2 Steps:
   1. Find a model for hand pose detection
-    1a. Load the model 
-    1b. Get Test prediction
-  2. Build a pipeline for inference 
+    1a. Load the model [x]
+    1b. Get Test prediction [x]
+  2. Build a pipeline for inference
+    2a.  Use Webcam.js to feed video input [x] 
+    2b. Get prediction on video feed [x]
+    2c. Visualize prediction
 
 #Question:
 - What model will I be using?

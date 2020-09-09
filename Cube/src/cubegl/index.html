@@ -13,16 +13,19 @@
         <!-- Import @tensorflow/tfjs-core -->
  
         <script src="https://unpkg.com/@tensorflow-models/handpose@0.0.6/dist/handpose.js"></script>
+
+        <script src="../HandSkeleton/webcam.js"></script>
     </head>
     <body onload="main()">
         <canvas id='webgl' width="400" height="400">
             This canvas will hold the cube
         </canvas>
 
-        <canvas id='canvas' width="280" height="280" 
-        style="position: absolute; top: 100;left: 100;border:8px solid;"></canvas>
-        
-        <img id='canvasimg' src ='../FakeHandData/hand.jpg'  style="display: none;""/>
+        <div>
+            <div>
+                <video autoplay playsinline muted id='wc' width='244' height='244' "></video>
+            </div>
+        </div>
         <script src="../../lib/webgl-utils.js"></script>
         <script src="../../lib/webgl-debug.js"></script>
         <script src="../../lib/cuon-utils.js"></script>
