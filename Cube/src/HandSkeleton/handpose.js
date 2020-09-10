@@ -6,7 +6,7 @@ async function main2(){
     console.log('The model has been loaded');
 
     console.log('Loading Webcam');
-    const webcam = new Webcam(document.getElementById('wc'));
+    const webcam = new Webcam(document.getElementById('video'));
     await webcam.setup();
     console.log('Webcame is loaded');
 
@@ -22,22 +22,25 @@ async function main2(){
     ctx.translate(canvas.width, 0);
     ctx.scale(-1,1);
 
+    const artist = new Artist(canvas);
     while(true){
         
         const img = webcam.capture();
-        tf.browser.toPixels(img,canvas)
+        const drawResult = await tf.browser.toPixels(img,canvas)
         const predictions =  await model.estimateHands(img);
 
         if(predictions.length>0){
-            for (let i = 0; i < predictions.length; i++) {
-                const keypoints = predictions[i].landmarks;
-    
-                // Log hand keypoints.
-                for (let i = 0; i < keypoints.length; i++) {
-                    const [x, y, z] = keypoints[i];
-                    console.log(`Keypoint ${i}: [${x}, ${y}, ${z}]`);
-                }
-            }
+            const result = predictions[0].landmarks;
+            artist.drawKeypoints(result,predictions[0].annotations)
+            //for (let i = 0; i < predictions.length; i++) {
+                //const keypoints = predictions[i].landmarks;
+                //artist.drawKeypoints(re)
+                //// Log hand keypoints.
+                //for (let i = 0; i < keypoints.length; i++) {
+                    //const [x, y, z] = keypoints[i];
+                    //console.log(`Keypoint ${i}: [${x}, ${y}, ${z}]`);
+                //}
+            //}
         }
         img.dispose();
         await tf.nextFrame();

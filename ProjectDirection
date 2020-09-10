@@ -101,6 +101,7 @@
     2a.  Use Webcam.js to feed video input [x] 
     2b. Get prediction on video feed [x]
     2c. Visualize prediction
+      - Draw tensor image to canvas
 
 #Question:
 - What model will I be using?
@@ -109,4 +110,14 @@
   - The author of the model has uploaded the model as npm package, I will just npm install via npm
 - How can I test my model has been loaded?
   - How to run the html file?
+    - Use Chorme Web server to host the main folder or else it may not work
+    - Common error was 'tainted canvas' due to CROS
+- How to visualize the data?
+  - Inimate the form the  following 
+    - https://storage.googleapis.com/tfjs-models/demos/handpose/index.html
+  - Because we need to draw the pose
+    - We will have to draw the image into ctx
+        - 
+
+
   

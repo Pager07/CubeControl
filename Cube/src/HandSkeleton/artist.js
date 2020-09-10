@@ -64,11 +64,11 @@ class Artist{
             this.drawPoint(x - 2, y - 2, 3);
         }
 
-        const fingers = Object.keys(fingerLookupIndices);
+        const fingers = Object.keys(this.fingerLookupIndices);
         for (let i = 0; i < fingers.length; i++) {
             const finger = fingers[i];
-            const points = fingerLookupIndices[finger].map(idx => keypoints[idx]);
-            drawPath(points, false);
+            const points = this.fingerLookupIndices[finger].map(idx => keypoints[idx]);
+            this.drawPath(points, false);
         }
     }
 

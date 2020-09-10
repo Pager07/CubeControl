@@ -49,7 +49,7 @@ class Webcam {
         const batchedImage = croppedImage;
     
         //Dont normalize the batchedImage because the HandPose model expects just an image
-        return batchedImage.toFloat();
+        return batchedImage.toInt();
 
         //return batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
         });

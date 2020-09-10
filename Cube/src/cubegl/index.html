@@ -15,6 +15,7 @@
         <script src="https://unpkg.com/@tensorflow-models/handpose@0.0.6/dist/handpose.js"></script>
 
         <script src="../HandSkeleton/webcam.js"></script>
+        <script src="../HandSkeleton/artist.js"></script>
     </head>
     <body onload="main()">
         <canvas id='webgl' width="400" height="400">
@@ -23,7 +24,7 @@
 
         <div id='canvas-wrapper'>
             <canvas id='output'></canvas>
-            <video id="video" playsinline="" 
+            <video id="video" autoplay muted playsinline
             style="-webkit-transform:scaleX(-1);transform:scaleX(-1);visibility:hidden;width:auto;height:auto;position:absolute;" 
             width="640" height="500"> </video>
         </div>
