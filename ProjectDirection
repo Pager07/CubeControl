@@ -101,7 +101,16 @@
     2a.  Use Webcam.js to feed video input [x] 
     2b. Get prediction on video feed [x]
     2c. Visualize prediction
-      - Draw tensor image to canvas
+      - Draw tensor image to canvas [x]
+      - Draw the keypoints to the canvas [x]
+    2d. Run experiment to improve the prediction
+      - Check if there is any addition transformation we are applying to the image in webcam.js [x]
+      - Check if cropping the webcam.js affects the prediction
+      - Check if increasing the size of the video element [x]
+    2e. Visualization on webgl
+        - Use ScatterPlot libary to plot to draw a 3d interactable plot
+        - Use WebGl to plot hand on the cavas of the cube  
+
 
 #Question:
 - What model will I be using?
@@ -118,6 +127,23 @@
   - Because we need to draw the pose
     - We will have to draw the image into ctx
         - 
+- Does the webcam.js resize the image?
+  - Experimentation is needed to check if crop affects the models, prediction
 
+- What Library to plot 3D graph
+  - ScatterGL
+- How to use the ScatterGl library?
+  - Look into ScatterGl Api to get a sense
+  - is stats object realated to ScatterGl? 
+    - No, its for the fps display, which is also very coo
+  - What is the dat object used for?
+    - 
+
+
+- What are the ways to detect 2 hands?
+  1. Use hand tracker to find hands then cop the image area and pass it to model
+    - https://towardsdatascience.com/handtrackjs-677c29c1d585
+  2. Split the image assuming your 2 hands going to be in 2 different side of image
+    - Better latency
 
   

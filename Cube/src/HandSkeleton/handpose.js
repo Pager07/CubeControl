@@ -1,4 +1,4 @@
-var canvas, rawImage;
+var canvas, rawImage,artist,artist3d;
 
 async function main2(){
     console.log('Loading the model')
@@ -22,7 +22,11 @@ async function main2(){
     ctx.translate(canvas.width, 0);
     ctx.scale(-1,1);
 
-    const artist = new Artist(canvas);
+    artist = new Artist(canvas);
+
+    artist3d = new Atrist3D(document.getElementById('scatter-gl-container'),
+        video.width,video.height);
+
     while(true){
         
         const img = webcam.capture();
@@ -32,6 +36,7 @@ async function main2(){
         if(predictions.length>0){
             const result = predictions[0].landmarks;
             artist.drawKeypoints(result,predictions[0].annotations)
+            artist3d.renderPointCloud(result);
             //for (let i = 0; i < predictions.length; i++) {
                 //const keypoints = predictions[i].landmarks;
                 //artist.drawKeypoints(re)
