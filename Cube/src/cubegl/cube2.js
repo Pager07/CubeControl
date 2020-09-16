@@ -98,6 +98,7 @@ lightDirection.normalize();     // Normalize
 gl.uniform3fv(u_LightDirection, lightDirection.elements);
 
 // Calculate the view matrix and the projection matrix
+
 viewMatrix.setLookAt(0, 0, 15, 0, 0, -100, 0, 1, 0);
 projMatrix.setPerspective(30, canvas.width/canvas.height, 1, 100);
 // Pass the model, view, and projection matrix to the uniform variable respectively
@@ -130,9 +131,7 @@ switch (ev.keyCode) {
     g_xScale = (g_xScale + SCALE_STEP);
     break;
     case 83:
-    console.log(g_xScale);
     g_xScale = (g_xScale - SCALE_STEP);
-    console.log(g_xScale);
     break;
     case 68:
     g_yScale = (g_yScale + SCALE_STEP );

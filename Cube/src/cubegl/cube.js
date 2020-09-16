@@ -166,6 +166,11 @@ function keydown(ev, gl, u_ModelMatrix, u_NormalMatrix, u_isLighting) {
         case 89:
         g_zTranslate = (g_zTranslate - TRANSLATE_STEP);
         break;
+        case 86:
+        g_yTranslate = (g_yTranslate + 1);
+        g_zTranslate = (g_zTranslate + 1);
+        g_xTranslate = (g_xTranslate + 1);
+        break;
         default: return; // Skip drawing at no effective action
     }
     

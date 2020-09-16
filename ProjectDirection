@@ -39,8 +39,8 @@
     - indexBuffer
     	- An index buffer is essentially an array of pointers into the vertex buffer. 
     	- It allows you to reorder the vertex data, and reuse existing data for multiple vertices. 
-    	- https://vulkan-tutorial.com/Vertex_buffers/Index_buffer#:~:text=An%20index%20buffer%20is%20essentially,existing%20data%20for%20multiple%20vertices.
-
+    	- https://vulkan-tutorial.com/Vertex_buffers/Index_buffer#:~:text=An%20index%20buffer%20is%20essen
+tially,existing%20data%20for%20multiple%20vertices.
 
   	- arrayBuffer
   	- axesVertexBuffer
@@ -78,10 +78,13 @@
 
   	- g_normalMatrix
 
+    - mvp_Matrix   
   - How to apply transformation to the cube?
     - modelMatrix.setTranslate()
     - modelMatrix.rotate(angel, x,y,z)
 
+  - What do we have to in the main function?
+    -
 # Transforming the cube using keyboard:
   - Rotation
      - Arrow keys
@@ -108,8 +111,7 @@
       - Check if cropping the webcam.js affects the prediction
       - Check if increasing the size of the video element [x]
     2e. Visualization on webgl
-        - Use ScatterPlot libary to plot to draw a 3d interactable plot
-        - Use WebGl to plot hand on the cavas of the cube  
+        - Use ScatterPlot libary to plot to draw a 3d interactable plot [x]
 
 
 #Question:
@@ -139,6 +141,16 @@
   - What is the dat object used for?
     - 
 
+#Goals 3 steps:
+  1. Translate the cube using 1 hand
+    - 1a. Translate the cube given (x,y,z) [x] 
+    - 1b. Generate (x,y,z) from hands
+      - Make a button to stop-start prediciton [x]
+      - Find the mean (x,y,z) for hand pose[x]
+
+    - 1c. Translate the cube using hands (x,y,z)
+  2. Rotate the cube using 1 hand 
+  3. Enlarge the cube with 2 hands 
 
 - What are the ways to detect 2 hands?
   1. Use hand tracker to find hands then cop the image area and pass it to model
@@ -146,4 +158,20 @@
   2. Split the image assuming your 2 hands going to be in 2 different side of image
     - Better latency
 
-  
+
+  - How to translate the cube using hand pose?
+    - Train a 3D conv with LSTM (i think this is overdoing it)
+    - Generate the direction of movement vector of hand and translate the cube in that particular direction
+
+  - How to translate the cube in a given direction?
+    - How are we moving the top part of the hand?
+      - we are using translate/rotaate function
+      - What matrix are we applying tat to?
+        - Applying it to modelMatrix
+      - Why not projection or view matrix?
+        - What transformation are we applying to the projection matirx?
+          - nothing: we just apply setPerspetive and lookAt()
+        - What does lookAt() function do?
+          - lookAt(M, eye_x, eye_y, eye_z, center_x, center_y, center_z, up_dx, up_dy, up_dz)
+  - What does my output look like from the pose model?
+    - 

@@ -16,6 +16,11 @@
         <script src="https://cdn.jsdelivr.net/npm/three@0.106.2/build/three.min.js"></script>
         <script src="https://storage.googleapis.com/learnjs-data/handtrack_staging/scatter-gl.js"></script>
         
+        <!-- numjs -->
+        <script src="bower_packages/numjs/dist/numjs.min.js"></script>
+        <!-- or include it directly from a CDN -->
+        <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
+        
         <script src="../HandSkeleton/webcam.js"></script>
         <script src="../HandSkeleton/artist.js"></script>
         <script src="../HandSkeleton/artist3d.js"></script>
@@ -25,7 +30,8 @@
         <canvas id='webgl' width="400" height="400">
             This canvas will hold the cube
         </canvas>
-
+        <button type="button" id='startPredicting' onclick="startPredicting()">Start Predicting</button>
+        <button type="button" id='stopPredicting' onclick="stopPredicting()">Stop Predicting</button>
         <div id='canvas-wrapper'>
             <canvas id='output'></canvas>
             <video id="video" autoplay muted playsinline
