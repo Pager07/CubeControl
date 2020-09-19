@@ -27,7 +27,8 @@ async function init(){
 
     artist3d = new Atrist3D(document.getElementById('scatter-gl-container'),
         video.width,video.height);
-
+    
+    stats3d = new Stats3d();
 }
 
 
@@ -44,28 +45,7 @@ async function predict(){
             artist.drawKeypoints(result,predictions[0].annotations)
             artist3d.renderPointCloud(result);
             
-            const meanCoordTensor = tf.tidy(()=>{
-                var keypointsTensor = null;
-                for (let i = 0; i < predictions.length; i++) {
-                    const keypoints = predictions[i].landmarks;
-                    // Log hand keypoints.
-                    for (let i = 0; i < keypoints.length; i++) {
-                        if(i == 0){
-                            keypointsTensor = tf.tensor2d([keypoints[i]]);
-                        }else{
-                            tensor = tf.tensor2d([keypoints[i]]);
-                            keypointsTensor = tf.concat([keypointsTensor, tensor],0)
-                        }
-                        
-                        //const [x, y, z] = keypoints[i];
-                        //console.log(`Keypoint ${i}: [${x}, ${y}, ${z}]`);
-                    }
-                }
-                return keypointsTensor.mean(0);
-
-
-            });
-            var meanCoord = await meanCoordTensor.data();
+            var meanCoord = await stats3d.getMean(result,0).data();
             artist.drawPoint(meanCoord[1]-2, meanCoord[0]-2,3);
         }
         img.dispose();

@@ -1,0 +1,27 @@
+{
+  "name": "cubecontrol",
+  "version": "1.0.0",
+  "description": "1. Contorl a virtul cube with my hand 2. I should be able to do the following transformation: \t- Rotate the cube  \t- Enlarge the cube \t- Translate the cube",
+  "main": "index.html",
+  "dependencies": {
+    "collections": "^5.1.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pager07/CubeControl.git"
+  },
+  "keywords": [
+    "cube",
+    "cubecontrol"
+  ],
+  "author": "Sandeep Thapa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pager07/CubeControl/issues"
+  },
+  "homepage": "https://github.com/Pager07/CubeControl#readme"
+}

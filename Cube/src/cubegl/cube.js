@@ -1,4 +1,3 @@
-// Directional lighting demo: By Frederick Li
 // Vertex shader program
 var VSHADER_SOURCE =
     'attribute vec4 a_Position;\n' +
@@ -344,4 +343,4 @@ function draw(gl,u_ModelMatrix, u_NormalMatrix, u_isLighting){
 
 }
 
-
+export {g_xTranslate,g_yTranslate,g_zTranslate};
